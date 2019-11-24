@@ -17,12 +17,13 @@ class SessionsController < ApplicationController
     if new_session.save
       redirect_to session_path(new_session)
     else
+      @new_session = Session.new
       render :new
     end
   end
 
   def edit
-    @edited_session = Session.find(params[:id])
+    @session = Session.find(params[:id])
   end
 
   def update
@@ -30,7 +31,8 @@ class SessionsController < ApplicationController
     if edited_session.update(session_params)
       redirect_to session_path(edited_session)
     else
-      render :new
+      @session = Session.find(params[:id])
+      render :edit
     end
   end
 

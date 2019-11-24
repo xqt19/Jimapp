@@ -12,6 +12,8 @@ class InstructionsController < ApplicationController
     if new_instruction.save
       redirect_to session_path(new_instruction.session)
     else
+      @instruction = Instruction.new
+      @session = new_instruction.session
       render :new
     end
   end
@@ -28,7 +30,7 @@ class InstructionsController < ApplicationController
     else
       @session = @edited_instruction.session
       @instruction = @edited_instruction
-      render :new
+      render :edit
     end
   end
 
