@@ -1,0 +1,12 @@
+<div class = "d-flex justify-content-center">
+<%= simple_form_for session do |f| %>
+    <%= f.input :name, error: 'Name is mandatory, please specify one' %>
+    <%= f.input :category, collection: %w(Aerobics Circuit Endurance Maintainence Routine Strength), error: 'Category is mandatory, please specify one' %>
+    <%= f.input :difficulty, collection: %w(Easy Moderate Tough Spartan), error: 'Difficulty is not mandatory, please specify one'%>
+    <%= f.input :deadline, as: :datetime, label: "Deadline to complete this session:", error: 'Deadline is not mandatory, please specify one' %>
+    <%= f.input :completed, as: :boolean, label: "Have you completed this session?", error: 'Completion Status is not mandatory, please specify one' %>
+    <div class = "d-flex justify-content-center">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

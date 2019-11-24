@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center my-3">
+    <h1>Editing <%= @edited_session.name %></h1>
+</div>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+    <%= render "form", session: @edited_session %>
+</div>
+<br><br>
+<div class="d-flex justify-content-center">
+    <%= link_to "Back to Home", root_path  %>
+</div>

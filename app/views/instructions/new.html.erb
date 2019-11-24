@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center my-3">
+    <h1>
+        <%= @session.name %>
+    </h1>
+</div>
+<div class="container">
+    <div class="justify-content-center w-70 p-3 border border-secondary">
+        <div class="d-flex justify-content-center mt-3">
+            <h4>You are required to complete this
+                <%= @session.category %> Training session</h4>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h4>by
+                <%= @session.deadline.strftime("%d") %>
+                <%= Date::ABBR_MONTHNAMES[@session.deadline.strftime("%m").to_i] %>
+                <%= @session.deadline.strftime("%Y at %I:%M%p") %>.</h4>
+        </div>
+        <div class="d-flex justify-content-center">
+            <% if @session.deadline - DateTime.now < 0 %>
+            <h6>(Deadline passed by
+                <% c= Time.diff(@session.deadline, DateTime.now) %>
+                <%= c[:diff]  %>)</h6>
+            <% else %>
+            <h6>
+                <% c= Time.diff(@session.deadline, DateTime.now) %> (Due in
+                <%= c[:diff]  %>)</h6>
+            <% end %>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <ul>
+                <% @session.instructions.each do |instruction| %>
+                <li>
+                    <%= instruction.exercise.name %>:
+                    <%= instruction.instruction %>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-3">
+        <%= render "form", session: @session, instruction:@instruction %>
+    </div>
+    <div class="d-flex justify-content-center my-3">
+        <%= link_to "Back to Home", root_path  %>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center my-3">
+    <h1>All my workouts</h1>
+</div>
+
+<div class="d-flex justify-content-center my-3">
+    <%= link_to "Add a new workout", sessions_new_path, class: "btn btn-primary"  %>
+</div>
+
+<div class="d-flex justify-content-center p-3">
+
+
+        <div class="row justify-content-center">
+            <% @sessions.each do |session| %>
+            <div class="card m-3" style="width: 18rem; border-radius: 15px">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= session.name  %>
+                    </h5>
+                    <p class="card-text">
+                        <%= session.category %> Training
+                        <br>Difficulty: <%= session.difficulty %> </p>
+                        <div class="d-flex justify-content-between align-self-end">
+                    <%= link_to "See More", session_path(session), class: "btn btn-primary", style: "border-radius: 5px"  %>
+                    <%= link_to "Delete", session_path(session), method: :delete, class: "btn btn-danger", style: "border-radius: 5px"  %>
+                  </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+
+
+</div>

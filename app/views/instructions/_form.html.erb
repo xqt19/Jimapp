@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center">
+    <%= simple_form_for [@session, @instruction] do |f| %>
+    <%= f.input :instruction, placeholder: '20 reps', error: 'Instruction is mandatory, please specify one' %>
+    <%= f.association :exercise, error: 'Please specify type of exercise.' %>
+    <div class="d-flex justify-content-center">
+        <%= f.button :submit, 'Send!', class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</div>
